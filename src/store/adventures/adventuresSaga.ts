@@ -40,6 +40,7 @@ function* exploreSaga(action: PayloadAction<string>) {
       password,
     } as User);
     yield put(setBackpack(newBackpack));
+    yield put({ type: "score/fetch" });
     const lostItems = backpack.filter((item) => !newBackpack.includes(item));
     const newItems = newBackpack.filter((item) => !backpack.includes(item));
     yield put(
