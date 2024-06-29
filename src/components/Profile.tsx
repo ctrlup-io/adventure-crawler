@@ -1,13 +1,12 @@
-import { useAppSelector } from "../store/hook";
+import { useAppDispatch, useAppSelector } from "../store/hook";
 import { selectUserScore } from "../store/score/scoreSlice";
 import { reset, selectUser } from "../store/user/userSlice";
 import { Button, Stack, Typography } from "@mui/material";
-import { useDispatch } from "react-redux";
 
 export default function Profile() {
   const user = useAppSelector(selectUser);
   const score = useAppSelector(selectUserScore);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const quit = () => {
     dispatch(reset());
   };

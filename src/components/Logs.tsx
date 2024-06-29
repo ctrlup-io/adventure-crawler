@@ -1,7 +1,9 @@
-import { useAppSelector } from "../store/hook";
+import { useAppDispatch, useAppSelector } from "../store/hook";
 import { selectUser } from "../store/user/userSlice";
 import {
+  Button,
   Card,
+  CardActions,
   CardContent,
   CardHeader,
   Grid,
@@ -11,6 +13,10 @@ import {
 
 export default function Logs() {
   const user = useAppSelector(selectUser);
+  const dispatch = useAppDispatch();
+  const handleExplore = (name: string) => () => {
+    dispatch({ type: "adventures/explore", payload: name });
+  };
   return (
     <Stack spacing={2}>
       <Typography variant="h2">Carnet de bord</Typography>
@@ -84,6 +90,13 @@ export default function Logs() {
                   )}
                 </Typography>
               </CardContent>
+              <CardActions>
+                <CardActions>
+                  <Button size="small" onClick={handleExplore(log.adventure)}>
+                    Explorer à nouveau
+                  </Button>
+                </CardActions>
+              </CardActions>
             </Card>
           </Grid>
         ))}
