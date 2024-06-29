@@ -25,6 +25,6 @@ export const { reset, set } = scoreSlice.actions;
 export const selectScore = (state: RootState) => state.score;
 
 export const selectUserScore = (state: RootState) =>
-  state.score.rows.find((row) => row.name === state.user.name)?.score;
+  state.score.rows.find((row) => row.name === state.user.name)?.score || 0;
 
 export default scoreSlice.reducer;
