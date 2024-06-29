@@ -51,7 +51,7 @@ export default function Store() {
                   title={item.name}
                   titleTypographyProps={{ variant: "body1" }}
                 />
-                <CardContent sx={{ flexGrow: 1, overflowY: "scroll" }}>
+                <CardContent sx={{ flexGrow: 1, overflowY: "auto" }}>
                   <Typography variant="caption">{item.description}</Typography>
                 </CardContent>
                 <CardActions>
