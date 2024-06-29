@@ -9,8 +9,7 @@
     "format": "prettier . --write",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "prepare": "husky",
-    "preview": "vite preview",
-    "proxy": "lcp --proxyUrl https://adventure-crawler.up.railway.app/"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -42,7 +41,6 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
-    "local-cors-proxy": "^1.1.0",
     "prettier": "^3.3.2",
     "prettier-plugin-packagejson": "^2.5.0",
     "typescript": "^5.2.2",

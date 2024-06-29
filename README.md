@@ -22,13 +22,7 @@ npm i
 cp .env.example .env
 ```
 
-4. Start proxy:
-
-```
-npm run proxy
-```
-
-5. Start app in development mode:
+4. Start app in development mode:
 
 ```
 npm run dev
