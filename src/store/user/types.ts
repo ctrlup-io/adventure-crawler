@@ -1,5 +1,6 @@
 export type Log = {
   adventure: string;
+  backpack: string[];
   report: string;
   score: number;
   createdAt: string;

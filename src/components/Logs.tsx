@@ -44,8 +44,12 @@ export default function Logs() {
                 <Typography variant="caption" whiteSpace="pre-wrap">
                   {log.report}
                 </Typography>
-              </CardContent>
-              <CardContent>
+                <br />
+                <Typography variant="caption">
+                  Équipements : {log.backpack.join(", ")}
+                </Typography>
+                <br />
+                <br />
                 <Typography variant="caption">
                   {new Intl.RelativeTimeFormat("fr", {
                     style: "short",

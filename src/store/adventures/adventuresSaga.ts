@@ -29,7 +29,7 @@ function* fetchSaga() {
 
 function* exploreSaga(action: PayloadAction<string>) {
   try {
-    const { name, password }: UserState = yield select(selectUser);
+    const { name, password, backpack }: UserState = yield select(selectUser);
     const log: Log = yield call(
       exploreAdventure,
       { name, password } as User,
@@ -40,6 +40,7 @@ function* exploreSaga(action: PayloadAction<string>) {
         ...log,
         adventure: action.payload,
         createdAt: new Date().toUTCString(),
+        backpack,
       }),
     );
   } catch (error) {

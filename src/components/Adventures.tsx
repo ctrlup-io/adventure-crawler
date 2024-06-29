@@ -71,14 +71,13 @@ export default function Adventures() {
                     variant: "body1",
                   }}
                 />
-                <CardContent>
+                <CardContent sx={{ flexGrow: 1, overflowY: "auto" }}>
                   <Typography variant="caption">
                     {explorations.length > 0
                       ? `${explorations.length} explorations`
                       : "Pas encore explorée"}
                   </Typography>
-                </CardContent>
-                <CardContent sx={{ flexGrow: 1, overflowY: "auto" }}>
+                  <br />
                   <Table size="small">
                     <TableBody>
                       {explorations.map((exploration) => (
