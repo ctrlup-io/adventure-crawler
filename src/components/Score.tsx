@@ -33,24 +33,28 @@ export default function Score() {
           )}
         </Typography>
       )}
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>nom</TableCell>
-            <TableCell>pts</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {score.rows.map((row, index) => (
-            <TableRow key={row.name} selected={row.name === user.name}>
-              <TableCell>#{index + 1}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.score}</TableCell>
+      {score.rows.length > 0 ? (
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              <TableCell>nom</TableCell>
+              <TableCell>pts</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {score.rows.map((row, index) => (
+              <TableRow key={row.name} selected={row.name === user.name}>
+                <TableCell>#{index + 1}</TableCell>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.score}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      ) : (
+        <Typography variant="caption">Auncun score</Typography>
+      )}
     </Stack>
   );
 }
