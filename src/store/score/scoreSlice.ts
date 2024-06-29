@@ -1,4 +1,4 @@
-import type { RootState } from "../types";
+import { type RootState } from "../";
 import type { ScoreState } from "./types";
 import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
 
