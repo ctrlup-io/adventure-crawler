@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useEffect } from "react";
 
-export default function Score() {
+export default function Scores() {
   const user = useAppSelector(selectUser);
   const score = useAppSelector(selectScore);
   const dispatch = useAppDispatch();
