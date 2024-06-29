@@ -28,9 +28,11 @@ export default function Adventures() {
       <Typography variant="h2">Aventures</Typography>
       <Stack direction="row" alignItems="center" spacing={2}>
         <Typography variant="caption">{adventures.length} éléments</Typography>
-        <Button size="small" onClick={handleExploreAll}>
-          Explorer tout
-        </Button>
+        {adventures.length > 0 && (
+          <Button size="small" onClick={handleExploreAll}>
+            Explorer tout
+          </Button>
+        )}
       </Stack>
       <Grid container spacing={2}>
         {adventures.map((adventure) => (

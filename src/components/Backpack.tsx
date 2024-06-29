@@ -34,9 +34,11 @@ export default function Backpack() {
             sac à dos plein
           </Typography>
         )}
-        <Button size="small" onClick={handleDisarmAll}>
-          Enlever tout
-        </Button>
+        {user.backpack.length > 0 && (
+          <Button size="small" onClick={handleDisarmAll}>
+            Enlever tout
+          </Button>
+        )}
       </Stack>
       <Grid
         container
