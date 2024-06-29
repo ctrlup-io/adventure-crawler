@@ -2,7 +2,6 @@ import { useAppSelector } from "../store/hook";
 import { selectUser } from "../store/user/userSlice";
 import {
   Card,
-  CardActions,
   CardContent,
   CardHeader,
   Grid,
@@ -45,7 +44,7 @@ export default function Logs() {
                   {log.report}
                 </Typography>
               </CardContent>
-              <CardActions>
+              <CardContent>
                 <Typography variant="caption">
                   {new Intl.RelativeTimeFormat("fr").format(
                     Math.floor(
@@ -54,7 +53,7 @@ export default function Logs() {
                     "seconds",
                   )}
                 </Typography>
-              </CardActions>
+              </CardContent>
             </Card>
           </Grid>
         ))}
