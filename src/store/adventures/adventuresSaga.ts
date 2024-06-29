@@ -1,7 +1,7 @@
-import { exploreAdventure, getAdventures } from "../../api";
+import { exploreAdventure, getAdventures, getBackpack } from "../../api";
 import type { Log, User } from "../../api/types";
 import type { UserState } from "../user/types";
-import { insertLog, selectUser } from "../user/userSlice";
+import { insertLog, selectUser, setBackpack } from "../user/userSlice";
 import { set, reset, selectAdventures } from "./adventureSlice";
 import type { Adventure, AdventureState } from "./types";
 import { PayloadAction } from "@reduxjs/toolkit";
@@ -35,12 +35,23 @@ function* exploreSaga(action: PayloadAction<string>) {
       { name, password } as User,
       action.payload,
     );
+    const newBackpack: string[] = yield call(getBackpack, {
+      name,
+      password,
+    } as User);
+    yield put(setBackpack(newBackpack));
+    const lostItems = backpack.filter((item) => !newBackpack.includes(item));
+    const newItems = newBackpack.filter((item) => !backpack.includes(item));
     yield put(
       insertLog({
         ...log,
         adventure: action.payload,
         createdAt: new Date().toUTCString(),
-        backpack,
+        backpack: {
+          initialItems: backpack,
+          lostItems,
+          newItems,
+        },
       }),
     );
   } catch (error) {

@@ -45,11 +45,34 @@ export default function Logs() {
                   {log.report}
                 </Typography>
                 <br />
-                <Typography variant="caption">
-                  Équipements : {log.backpack.join(", ")}
-                </Typography>
-                <br />
-                <br />
+                {log.backpack.initialItems.length > 0 && (
+                  <>
+                    <Typography variant="caption">
+                      Équipements de départ :{" "}
+                      {log.backpack.initialItems.join(", ")}
+                    </Typography>
+                    <br />
+                    <br />
+                  </>
+                )}
+                {log.backpack.newItems.length > 0 && (
+                  <>
+                    <Typography variant="caption">
+                      Nouveaux équipements : {log.backpack.newItems.join(", ")}
+                    </Typography>
+                    <br />
+                    <br />
+                  </>
+                )}
+                {log.backpack.lostItems.length > 0 && (
+                  <>
+                    <Typography variant="caption">
+                      Équipements perdus : {log.backpack.lostItems.join(", ")}
+                    </Typography>
+                    <br />
+                    <br />
+                  </>
+                )}
                 <Typography variant="caption">
                   {new Intl.RelativeTimeFormat("fr", {
                     style: "short",
