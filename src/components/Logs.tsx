@@ -47,7 +47,9 @@ export default function Logs() {
               </CardContent>
               <CardContent>
                 <Typography variant="caption">
-                  {new Intl.RelativeTimeFormat("fr").format(
+                  {new Intl.RelativeTimeFormat("fr", {
+                    style: "short",
+                  }).format(
                     Math.floor(
                       (new Date(log.createdAt).getTime() - Date.now()) / 1000,
                     ),
