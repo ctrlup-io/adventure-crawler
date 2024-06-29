@@ -19,3 +19,8 @@ export type Score = {
   updatedAt?: string;
   rows: ScoreRow[];
 };
+
+export type Log = {
+  report: string;
+  score: number;
+};

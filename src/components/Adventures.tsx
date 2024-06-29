@@ -17,8 +17,8 @@ export default function Adventures() {
   useEffect(() => {
     dispatch({ type: "adventures/fetch" });
   }, [dispatch]);
-  const handleJoin = (name: string) => () => {
-    dispatch({ type: "adventures/join", payload: name });
+  const handleExplore = (name: string) => () => {
+    dispatch({ type: "adventures/explore", payload: name });
   };
   return (
     <Stack spacing={2}>
@@ -54,12 +54,8 @@ export default function Adventures() {
                 }}
               />
               <CardActions>
-                <Button
-                  size="small"
-                  onClick={handleJoin(adventure.name)}
-                  disabled
-                >
-                  Rejoindre
+                <Button size="small" onClick={handleExplore(adventure.name)}>
+                  Explorer
                 </Button>
               </CardActions>
             </Card>

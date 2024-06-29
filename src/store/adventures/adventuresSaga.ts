@@ -1,10 +1,11 @@
-import { getAdventures } from "../../api";
-import type { User } from "../../api/types";
+import { exploreAdventure, getAdventures } from "../../api";
+import type { Log, User } from "../../api/types";
 import type { UserState } from "../user/types";
-import { selectUser } from "../user/userSlice";
+import { insertLog, selectUser } from "../user/userSlice";
 import { set, reset } from "./adventureSlice";
 import type { Adventure } from "./types";
-import { call, put, select, takeLatest } from "redux-saga/effects";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { call, put, select, takeEvery, takeLatest } from "redux-saga/effects";
 
 function* fetchSaga() {
   try {
@@ -14,12 +15,33 @@ function* fetchSaga() {
       password,
     } as User);
     yield put(set(items));
-    yield put({ type: "adventures/fetch" });
   } catch (error) {
     yield put(reset());
   }
 }
 
+function* exploreSaga(action: PayloadAction<string>) {
+  try {
+    const { name, password }: UserState = yield select(selectUser);
+    const log: Log = yield call(
+      exploreAdventure,
+      { name, password } as User,
+      action.payload,
+    );
+    yield put(
+      insertLog({
+        ...log,
+        adventure: action.payload,
+        createdAt: new Date().toUTCString(),
+      }),
+    );
+  } catch (error) {
+    console.log(error);
+    yield;
+  }
+}
+
 export default function* adventuresSaga() {
-  yield takeLatest("shop/fetch", fetchSaga);
+  yield takeLatest("adventures/fetch", fetchSaga);
+  yield takeEvery("adventures/explore", exploreSaga);
 }

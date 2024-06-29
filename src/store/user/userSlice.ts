@@ -1,10 +1,11 @@
 import { type RootState } from "../";
-import type { UserState } from "./types";
+import type { Log, UserState } from "./types";
 import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: UserState = {
   registered: false,
   backpack: [],
+  logs: [],
 };
 
 export const userSlice = createSlice({
@@ -25,10 +26,15 @@ export const userSlice = createSlice({
       ...state,
       backpack: action.payload,
     }),
+    insertLog: (state, action: PayloadAction<Log>) => ({
+      ...state,
+      logs: [action.payload, ...state.logs],
+    }),
   },
 });
 
-export const { reset, set, register, setBackpack } = userSlice.actions;
+export const { reset, set, register, setBackpack, insertLog } =
+  userSlice.actions;
 
 export const selectUser = (state: RootState) => state.user;
 

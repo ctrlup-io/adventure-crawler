@@ -1,4 +1,4 @@
-import { Item, BackpackItem, User } from "./types";
+import { Item, BackpackItem, User, Log } from "./types";
 
 const { VITE_API_URL } = import.meta.env;
 
@@ -98,5 +98,24 @@ export async function getAdventures(user: User): Promise<Item[]> {
     return data.adventures;
   } catch (error) {
     return [];
+  }
+}
+
+export async function exploreAdventure(user: User, name: string): Promise<Log> {
+  try {
+    const url = new URL(`exploration/adventures/${name}`, VITE_API_URL);
+    const credentials = btoa(`${user.name}:${user.password}`);
+    const headers = new Headers({
+      Authorization: `Basic ${credentials}`,
+      "Content-Type": "application/json",
+    });
+    const response = await fetch(url, {
+      method: "POST",
+      headers,
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return { score: 0, report: "" };
   }
 }
