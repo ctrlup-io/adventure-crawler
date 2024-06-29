@@ -50,7 +50,14 @@ export default function Backpack() {
         {user.backpack.map((itemName) => {
           const item = items.find((item) => item.name === itemName);
           return (
-            <Grid item xs={3} flexWrap="wrap" component="li" key={itemName}>
+            <Grid
+              item
+              xs={12}
+              md={3}
+              flexWrap="wrap"
+              component="li"
+              key={itemName}
+            >
               <Card
                 sx={{
                   aspectRatio: 1,

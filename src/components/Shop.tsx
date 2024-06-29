@@ -39,7 +39,14 @@ export default function Store() {
         {items.map((item) => {
           const equiped = user.backpack.includes(item.name);
           return (
-            <Grid item xs={3} flexWrap="wrap" component="li" key={item.name}>
+            <Grid
+              item
+              xs={12}
+              md={3}
+              flexWrap="wrap"
+              component="li"
+              key={item.name}
+            >
               <Card
                 sx={{
                   aspectRatio: 1,

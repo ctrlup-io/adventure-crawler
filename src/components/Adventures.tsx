@@ -38,18 +38,21 @@ export default function Adventures() {
         {adventures.map((adventure) => (
           <Grid
             item
-            xs={3}
+            xs={12}
+            md={3}
             flexWrap="wrap"
             component="li"
             key={adventure.name}
             sx={{ listStyle: "none" }}
           >
             <Card
-              sx={{
+              sx={(theme) => ({
                 display: "flex",
                 flexDirection: "column",
-                aspectRatio: 2,
-              }}
+                [theme.breakpoints.up("md")]: {
+                  aspectRatio: 2,
+                },
+              })}
             >
               <CardHeader
                 title={adventure.name}

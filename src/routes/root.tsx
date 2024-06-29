@@ -10,7 +10,7 @@ import { Outlet } from "react-router-dom";
 
 export default function Root() {
   return (
-    <Container component="main" sx={{ pb: 8 }}>
+    <Container component="main" sx={{ p: 8 }}>
       <Stack flexDirection="column" spacing={6}>
         <Greetings />
         <Profile />

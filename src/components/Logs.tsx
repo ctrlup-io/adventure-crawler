@@ -19,7 +19,8 @@ export default function Logs() {
         {user.logs.map((log) => (
           <Grid
             item
-            xs={4}
+            xs={12}
+            md={3}
             flexWrap="wrap"
             component="li"
             key={`${log.createdAt}-${log.adventure}-${log.score}`}
