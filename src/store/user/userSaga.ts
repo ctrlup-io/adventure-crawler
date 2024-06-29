@@ -46,7 +46,6 @@ function* disarmSaga(action: PayloadAction<string>) {
     yield put(setBackpack(items));
     yield call(updateBackpack, { name, password } as User, items);
   } catch (error) {
-    console.log(error);
     yield;
   }
 }

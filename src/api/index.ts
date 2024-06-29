@@ -114,7 +114,6 @@ export async function exploreAdventure(user: User, name: string): Promise<Log> {
       headers,
     });
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     return { score: 0, report: "" };

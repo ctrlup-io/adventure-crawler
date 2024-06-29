@@ -25,6 +25,9 @@ export default function Store() {
   const handleEquip = (itemName: string) => () => {
     dispatch({ type: "user/backpack/equip", payload: itemName });
   };
+  const handleDisarm = (itemName: string) => () => {
+    dispatch({ type: "user/backpack/disarm", payload: itemName });
+  };
   return (
     <Stack spacing={2}>
       <Typography variant="h2">Magasin</Typography>
@@ -63,13 +66,18 @@ export default function Store() {
                 </CardContent>
                 <CardActions>
                   {equiped ? (
-                    <Chip
-                      size="small"
-                      variant="outlined"
-                      color="success"
-                      icon={<Check />}
-                      label="Équipé"
-                    />
+                    <>
+                      <Chip
+                        size="small"
+                        variant="outlined"
+                        color="success"
+                        icon={<Check />}
+                        label="Équipé"
+                      />
+                      <Button size="small" onClick={handleDisarm(item.name)}>
+                        Enlever
+                      </Button>
+                    </>
                   ) : (
                     <Button
                       size="small"
