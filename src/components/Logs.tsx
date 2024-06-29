@@ -41,7 +41,9 @@ export default function Logs() {
                 subheader={`${log.score}pts`}
               />
               <CardContent sx={{ flexGrow: 1, overflowY: "auto" }}>
-                <Typography whiteSpace="pre-wrap">{log.report}</Typography>
+                <Typography variant="caption" whiteSpace="pre-wrap">
+                  {log.report}
+                </Typography>
               </CardContent>
               <CardActions>
                 <Typography variant="caption">
