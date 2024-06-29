@@ -1,8 +1,8 @@
 import { type RootState } from "..";
-import type { ShopState, Adventure } from "./types";
+import type { Adventure, AdventureState } from "./types";
 import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-const initialState: ShopState = [];
+const initialState: AdventureState = [];
 
 export const adventuresSlice = createSlice({
   name: "adventures",

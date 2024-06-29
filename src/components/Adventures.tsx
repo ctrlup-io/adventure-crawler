@@ -20,10 +20,18 @@ export default function Adventures() {
   const handleExplore = (name: string) => () => {
     dispatch({ type: "adventures/explore", payload: name });
   };
+  const handleExploreAll = () => {
+    dispatch({ type: "adventures/exploreAll" });
+  };
   return (
     <Stack spacing={2}>
       <Typography variant="h2">Aventures</Typography>
-      <Typography variant="caption">{adventures.length} éléments</Typography>
+      <Stack direction="row" alignItems="center" spacing={2}>
+        <Typography variant="caption">{adventures.length} éléments</Typography>
+        <Button size="small" onClick={handleExploreAll}>
+          Explorer tout
+        </Button>
+      </Stack>
       <Grid container spacing={2}>
         {adventures.map((adventure) => (
           <Grid

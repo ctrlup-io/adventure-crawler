@@ -2,4 +2,4 @@ export type Adventure = {
   name: string;
 };
 
-export type ShopState = Adventure[];
+export type AdventureState = Adventure[];
