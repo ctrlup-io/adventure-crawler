@@ -5,14 +5,7 @@ import { insertLog, selectUser, setBackpack } from "../user/userSlice";
 import { set, reset, selectAdventures } from "./adventureSlice";
 import type { Adventure, AdventureState } from "./types";
 import { PayloadAction } from "@reduxjs/toolkit";
-import {
-  all,
-  call,
-  put,
-  select,
-  takeEvery,
-  takeLatest,
-} from "redux-saga/effects";
+import { call, put, select, takeEvery, takeLatest } from "redux-saga/effects";
 
 function* fetchSaga() {
   try {
@@ -40,7 +33,6 @@ function* exploreSaga(action: PayloadAction<string>) {
       password,
     } as User);
     yield put(setBackpack(newBackpack));
-    yield put({ type: "score/fetch" });
     const lostItems = backpack.filter((item) => !newBackpack.includes(item));
     const newItems = newBackpack.filter((item) => !backpack.includes(item));
     yield put(
@@ -55,6 +47,7 @@ function* exploreSaga(action: PayloadAction<string>) {
         },
       }),
     );
+    yield put({ type: "score/fetch" });
   } catch (error) {
     yield;
   }
@@ -63,11 +56,9 @@ function* exploreSaga(action: PayloadAction<string>) {
 function* exploreAllSaga() {
   try {
     const adventures: AdventureState = yield select(selectAdventures);
-    yield all(
-      adventures.map((adventure) =>
-        put({ type: "adventures/explore", payload: adventure.name }),
-      ),
-    );
+    for (const adventure of adventures) {
+      yield put({ type: "adventures/explore", payload: adventure.name });
+    }
   } catch (error) {
     yield;
   }
