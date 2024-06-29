@@ -52,7 +52,7 @@ export default function Adventures() {
             <Grid
               item
               xs={12}
-              md={3}
+              md={4}
               flexWrap="wrap"
               component="li"
               key={adventure.name}

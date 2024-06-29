@@ -20,7 +20,7 @@ export default function Logs() {
           <Grid
             item
             xs={12}
-            md={3}
+            md={4}
             flexWrap="wrap"
             component="li"
             key={`${log.createdAt}-${log.adventure}-${log.score}`}
