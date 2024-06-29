@@ -1,6 +1,6 @@
 import { getBackpack, updateBackpack, signIn } from "../../api";
-import { User } from "../../api/types";
-import { UserState } from "./types";
+import type { User } from "../../api/types";
+import type { UserState } from "./types";
 import { set, reset, register, selectUser, setBackpack } from "./userSlice";
 import { type PayloadAction } from "@reduxjs/toolkit";
 import { call, put, select, takeLatest } from "redux-saga/effects";

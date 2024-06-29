@@ -1,3 +1,4 @@
+import Adventures from "../components/Adventures";
 import Backpack from "../components/Backpack";
 import Greetings from "../components/Greetings";
 import Profile from "../components/Profile";
@@ -15,6 +16,7 @@ export default function Root() {
         <Score />
         <Backpack />
         <Shop />
+        <Adventures />
         <Outlet />
       </Stack>
     </Container>

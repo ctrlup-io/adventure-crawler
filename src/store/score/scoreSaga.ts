@@ -1,6 +1,6 @@
 import { getScore } from "../../api";
 import type { Score, User } from "../../api/types";
-import { UserState } from "../user/types";
+import type { UserState } from "../user/types";
 import { selectUser } from "../user/userSlice";
 import { set, reset } from "./scoreSlice";
 import { call, put, select, takeLatest } from "redux-saga/effects";

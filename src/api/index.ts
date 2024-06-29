@@ -85,3 +85,18 @@ export async function updateBackpack(
     return;
   }
 }
+
+export async function getAdventures(user: User): Promise<Item[]> {
+  try {
+    const url = new URL(`preparation/adventures?limit=1000`, VITE_API_URL);
+    const credentials = btoa(`${user.name}:${user.password}`);
+    const headers = new Headers({
+      Authorization: `Basic ${credentials}`,
+    });
+    const response = await fetch(url, { headers });
+    const data = await response.json();
+    return data.adventures;
+  } catch (error) {
+    return [];
+  }
+}
