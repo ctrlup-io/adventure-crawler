@@ -36,7 +36,7 @@ export default function Adventures() {
         {adventures.map((adventure) => (
           <Grid
             item
-            xs={2}
+            xs={3}
             flexWrap="wrap"
             component="li"
             key={adventure.name}
@@ -46,7 +46,7 @@ export default function Adventures() {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                aspectRatio: 1,
+                aspectRatio: 2,
               }}
             >
               <CardHeader

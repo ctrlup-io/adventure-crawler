@@ -19,10 +19,25 @@ export default function Backpack() {
   const handleDisarm = (itemName: string) => () => {
     dispatch({ type: "user/backpack/disarm", payload: itemName });
   };
+  const handleDisarmAll = () => {
+    dispatch({ type: "user/backpack/disarmAll" });
+  };
   return (
     <Stack spacing={2}>
       <Typography variant="h2">Sac à dos</Typography>
-      <Typography variant="caption">{user.backpack.length} éléments</Typography>
+      <Stack direction="row" alignItems="center" spacing={2}>
+        <Typography variant="caption">
+          {user.backpack.length} éléments
+        </Typography>
+        {user.backpack.length >= 10 && (
+          <Typography variant="caption" color="error">
+            sac à dos plein
+          </Typography>
+        )}
+        <Button size="small" onClick={handleDisarmAll}>
+          Enlever tout
+        </Button>
+      </Stack>
       <Grid
         container
         spacing={2}
@@ -32,9 +47,8 @@ export default function Backpack() {
       >
         {user.backpack.map((itemName) => {
           const item = items.find((item) => item.name === itemName);
-          if (!item) return null;
           return (
-            <Grid item xs={2} flexWrap="wrap" component="li" key={item.name}>
+            <Grid item xs={3} flexWrap="wrap" component="li" key={itemName}>
               <Card
                 sx={{
                   aspectRatio: 1,
@@ -43,14 +57,19 @@ export default function Backpack() {
                 }}
               >
                 <CardHeader
-                  title={item.name}
+                  title={itemName}
                   titleTypographyProps={{ variant: "body1" }}
                 />
                 <CardContent sx={{ flexGrow: 1, overflowY: "auto" }}>
-                  <Typography variant="caption">{item.description}</Typography>
+                  <Typography
+                    variant="caption"
+                    color={item ? "default" : "error"}
+                  >
+                    {item?.description || "Objet introuvable dans le magasin"}
+                  </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small" onClick={handleDisarm(item.name)}>
+                  <Button size="small" onClick={handleDisarm(itemName)}>
                     Enlever
                   </Button>
                 </CardActions>

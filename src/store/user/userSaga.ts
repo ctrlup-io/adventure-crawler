@@ -3,7 +3,7 @@ import type { User } from "../../api/types";
 import type { UserState } from "./types";
 import { set, reset, register, selectUser, setBackpack } from "./userSlice";
 import { type PayloadAction } from "@reduxjs/toolkit";
-import { call, put, select, takeLatest } from "redux-saga/effects";
+import { call, put, select, takeEvery, takeLatest } from "redux-saga/effects";
 
 function* logInSaga(action: PayloadAction<User>) {
   try {
@@ -46,13 +46,25 @@ function* disarmSaga(action: PayloadAction<string>) {
     yield put(setBackpack(items));
     yield call(updateBackpack, { name, password } as User, items);
   } catch (error) {
+    console.log(error);
+    yield;
+  }
+}
+
+function* disarmAllSaga() {
+  try {
+    const { name, password }: UserState = yield select(selectUser);
+    yield put(setBackpack([]));
+    yield call(updateBackpack, { name, password } as User, []);
+  } catch (error) {
     yield;
   }
 }
 
 export default function* userSaga() {
   yield takeLatest("user/logIn", logInSaga);
-  yield takeLatest("user/backpack/equip", equipSaga);
-  yield takeLatest("user/backpack/disarm", disarmSaga);
+  yield takeEvery("user/backpack/equip", equipSaga);
+  yield takeEvery("user/backpack/disarm", disarmSaga);
+  yield takeLatest("user/backpack/disarmAll", disarmAllSaga);
   yield takeLatest("user/backpack/fetch", fetchBackpackSaga);
 }

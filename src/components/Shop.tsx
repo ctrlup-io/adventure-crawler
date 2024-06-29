@@ -39,7 +39,7 @@ export default function Store() {
         {items.map((item) => {
           const equiped = user.backpack.includes(item.name);
           return (
-            <Grid item xs={2} flexWrap="wrap" component="li" key={item.name}>
+            <Grid item xs={3} flexWrap="wrap" component="li" key={item.name}>
               <Card
                 sx={{
                   aspectRatio: 1,
@@ -64,7 +64,11 @@ export default function Store() {
                       label="Équipé"
                     />
                   ) : (
-                    <Button size="small" onClick={handleEquip(item.name)}>
+                    <Button
+                      size="small"
+                      onClick={handleEquip(item.name)}
+                      disabled={user.backpack.length >= 10}
+                    >
                       Équiper
                     </Button>
                   )}

@@ -23,7 +23,7 @@ export default function Logs() {
             xs={4}
             flexWrap="wrap"
             component="li"
-            key={log.createdAt}
+            key={`${log.createdAt}-${log.adventure}-${log.score}`}
             sx={{ listStyle: "none" }}
           >
             <Card

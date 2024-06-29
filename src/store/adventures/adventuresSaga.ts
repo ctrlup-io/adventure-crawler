@@ -63,5 +63,5 @@ function* exploreAllSaga() {
 export default function* adventuresSaga() {
   yield takeLatest("adventures/fetch", fetchSaga);
   yield takeEvery("adventures/explore", exploreSaga);
-  yield takeEvery("adventures/exploreAll", exploreAllSaga);
+  yield takeLatest("adventures/exploreAll", exploreAllSaga);
 }
