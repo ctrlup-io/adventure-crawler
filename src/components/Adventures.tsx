@@ -43,21 +43,19 @@ export default function Adventures() {
           </Button>
         )}
       </Stack>
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={{ xs: 0, md: 4 }}
+        gap={{ xs: 4, md: 0 }}
+        component="ol"
+        sx={{ margin: 0, padding: 0, listStyle: "none" }}
+      >
         {adventures.map((adventure) => {
           const explorations = user.logs.filter(
             (log) => log.adventure === adventure.name,
           );
           return (
-            <Grid
-              item
-              xs={12}
-              md={4}
-              flexWrap="wrap"
-              component="li"
-              key={adventure.name}
-              sx={{ listStyle: "none" }}
-            >
+            <Grid item xs={12} md={4} component="li" key={adventure.name}>
               <Card
                 sx={{
                   display: "flex",

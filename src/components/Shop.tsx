@@ -34,22 +34,15 @@ export default function Store() {
       <Typography variant="caption">{items.length} éléments</Typography>
       <Grid
         container
-        spacing={2}
-        sx={{
-          listStyle: "none",
-        }}
+        spacing={{ xs: 0, md: 4 }}
+        gap={{ xs: 4, md: 0 }}
+        component="ol"
+        sx={{ margin: 0, padding: 0, listStyle: "none" }}
       >
         {items.map((item) => {
           const equiped = user.backpack.includes(item.name);
           return (
-            <Grid
-              item
-              xs={12}
-              md={3}
-              flexWrap="wrap"
-              component="li"
-              key={item.name}
-            >
+            <Grid item xs={12} md={3} component="li" key={item.name}>
               <Card
                 sx={{
                   aspectRatio: 1,

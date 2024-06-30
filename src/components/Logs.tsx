@@ -21,16 +21,20 @@ export default function Logs() {
     <Stack spacing={2}>
       <Typography variant="h2">Carnet de bord</Typography>
       <Typography variant="caption">{user.logs.length} éléments</Typography>
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={{ xs: 0, md: 4 }}
+        gap={{ xs: 4, md: 0 }}
+        component="ol"
+        sx={{ margin: 0, padding: 0, listStyle: "none" }}
+      >
         {user.logs.map((log) => (
           <Grid
             item
             xs={12}
             md={4}
-            flexWrap="wrap"
             component="li"
             key={`${log.createdAt}-${log.adventure}-${log.score}`}
-            sx={{ listStyle: "none" }}
           >
             <Card
               sx={{
