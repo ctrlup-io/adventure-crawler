@@ -3,6 +3,7 @@ import NotFound from "./components/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./routes/login";
 import Root from "./routes/root";
+import { CircularProgress } from "@mui/material";
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       {
         path: "/scores",
         element: (
-          <Suspense fallback={null}>
+          <Suspense fallback={<CircularProgress />}>
             <Scores />
           </Suspense>
         ),
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
       {
         path: "/logs",
         element: (
-          <Suspense fallback={null}>
+          <Suspense fallback={<CircularProgress />}>
             <Logs />
           </Suspense>
         ),
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: "/adventures",
         element: (
-          <Suspense fallback={null}>
+          <Suspense fallback={<CircularProgress />}>
             <Adventures />
           </Suspense>
         ),
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
       {
         path: "/backpack",
         element: (
-          <Suspense fallback={null}>
+          <Suspense fallback={<CircularProgress />}>
             <Backpack />
           </Suspense>
         ),
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: (
-          <Suspense fallback={null}>
+          <Suspense fallback={<CircularProgress />}>
             <Shop />
           </Suspense>
         ),
