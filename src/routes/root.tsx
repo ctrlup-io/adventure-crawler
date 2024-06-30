@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 export default function Root() {
   return (
     <Container component="main" sx={{ pb: 8 }}>
-      <Stack flexDirection="column" spacing={6}>
+      <Stack flexDirection="column" spacing={6} alignItems="center">
         <Greetings />
         <Profile />
         <NavigationTab />
