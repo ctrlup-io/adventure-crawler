@@ -33,7 +33,7 @@ export default function Login() {
     return <Navigate to="/" />;
   }
   return (
-    <Container component="main" sx={{ p: 8 }}>
+    <Container component="main" sx={{ pb: 8 }}>
       <Stack
         flexDirection="column"
         justifyContent="center"
